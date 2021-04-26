@@ -4,13 +4,13 @@ This software simulates the spread of a contagious disease in an organization/ne
 Testing and isolation strategies can be examined during the simulation and useful metrics are 
 collected. See our paper [TODO link to paper] for the extensive description of the probabilistic implemented in our simulator.
 
-In brief, the simulation respects the community graph of people associated with diffrent groups. See an example of a community graph below:
+In brief, the simulation respects the community graph of people associated with different groups. See an example of a community graph below, where 14 people ( 9 students, 3 teachers a manager and a secretary) are associated with 3 groups (Class 1, Class 2, and Management). Each person can belong to 0 or more groups:
 
 <p align="center">
 <img src="Graph.PNG" width="60%">
 </p>
 
-Each person has the probability to bring the infection from outside the organization and to spread it within the groups he/she is associated with. Once the person becomes infected, his/her disease procceeds according to the state diagram below:
+Each person has the probability to bring the infection from outside the organization and to spread it within the groups he/she is associated with. Once the person becomes infected, his/her disease proceeds according to the state diagram below:
 
 <p align="center">
 <img src="FSM.PNG" width="60%">
@@ -66,6 +66,7 @@ The morbidity curves, indicating the number of ill people (at different illness 
 <img src="Results/Quickstart__AT_RFG__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="19%">
 <img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="19%">
 </p>
+
 ## Usage
 
 After a successful installation, you can use the simulator to simulate the disease spread on a dataset (or a community) of your own. There are 2 ways to run the simulator: (1) single run using ```main.py``` and a batched run using ```batch.py```. The Single run performs 1 simulation "game", and provides the run summary for this run only. The batched execution allows repetitive evaluation of the isolation and testing techniques (with different random seeds) for a statistical significance of the experiments and for a cross-comparison betwen several isolation methods.
