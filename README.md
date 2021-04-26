@@ -76,9 +76,8 @@ After a successful installation, you can use the simulator to simulate the disea
 
 For the simulator to work, you need 3 things: Excel file describing the dataset, Yaml file describing global configurations, txt file with some initial setup lines to start the simulation.
 Below, I elaborate on how these files should be stuctured (you can also just use the attached "two_clusters" dataset as a reference).
-### (1) Excel (xlsx) spreadsheet with five (05) sheets:
-The Excel (xlsx) describes the simulated community graph, and the attributes of the individuals. 
-It must contain with five (05) sheets:
+### (1) Excel (xlsx) file
+The Excel (xlsx) describes the simulated community graph, and the attributes of the individuals and of the groups. It must contain with five sheets:
 
 1) "Organization" - people names and the groups they are associated with. You only need to maintain the first 5 column names(change the content in the rows below the header row), and you can modify the rest of the columns (the group association columns) by changing their names, adding more or removing some. 
 2) "Ext_Risk" – Personal External risk factors, that indicate the likelihood (legal values: 0-5) of each person to get the infection from outside the institution. You can add as many risk factors as you like. But keep the first 5 column names (modify only the content of the non header rows).
@@ -93,32 +92,32 @@ For all risk factors, 5 (also denoted as max_rate) stands for “increased risk 
 2) weights for the individuals internal risk factors.
 3) weights for the groups' risk factors.
 4) f_neg and f_pos function shapes (used for discounting the risk of the infection)
-5) time_variables (in days) with their corresponding expectations and standard deviations. These means and standard deviations parameterize the corresponding gaussian distributions from which the illness stage durations will be sampled during the simulation. 
+5) time_variables (in days) with their corresponding expectations and standard deviations. These means and standard deviations (STD) parameterize the corresponding gaussian (and exponential) distributions from which the illness stage durations will be sampled during the simulation (an independend drawing for each illness session).
     
-	(t1,s1) : Mean duration between time of INFECTION and time of DETECTION, and the associated standard deviation
+	(t1,s1) : Mean, STD of Gaussian distribution from which the simulator draws T1 - the duration of the INFECTED stage.
+	
+	(t2,s2) : Mean, STD of Gaussian distribution from which the simulator draws T2 - the duration of the DETECTABLE stage.
    
-	(t2,s2) : Mean duration between time of DETECTION and time of being CONTAGIOUS, and the associated standard deviation
+	(t3,s3): Mean, STD of Gaussian distribution from which the simulator draws T3 - the duration of the CONTAGIOUS-A-SYMPTOMATIC stage.
    
-	(t3,s3): Mean duration between time of being CONTAGIOUS and time of being NON-CONTAGIOUS, and the associated standard deviation 
+	(t4,s4): Shift,lambda parameter of Exponential disribution, from which the simulator draws T4 - the duration the CONTAGIOUS-PRE-SYMPTOMATIC stage.
    
-	(t4,s4): Mean duration between time of being CONTAGIOUS and time of being SYMPOMATIC, and the associated standard deviation
-   
-	(t5,s5): Mean duration between time of being SYMPOMATIC and time of being NON-CONTAGIOUS, the associated standard deviation. 
+	(t5,s5): Mean, STD of Gaussian distribution, from which the simulator draws T5 - the duration the CONTAGIOUS-SYMPTOMATIC stage.
    
 6) Test error probabilities  (in [0,1] fractions) to represent the probability of returning a wrong test result of person x as a function of the state x resides at:
    
-	P_test_error_idle – (False-Positive) a probability that a person in idle state is found Positive in a test. This value should be according to the commonly known false-positive rate.
+	P_test_error_idle – (False-Positive) a probability that a person in SUSCEPTIBLE state is found Positive in a test. This value should be according to the commonly known false-positive rate.
    
-	P_test_error_infected – (False-Negative), a probability that a person in infected state is found Negative in a test. This value should be quite high since the person is still not reached the detectable state.
+	P_test_error_infected – (False-Negative), a probability that a person in INFECTED state is found Negative in a test. This value should be quite high since the person is still not reached the detectable state.
    
-	P_test_error_detectable – (False-Negative) a probability that a person in detectable state is found Negative in a test. This value should be much lower than P_test_error_infected.
+	P_test_error_detectable – (False-Negative) a probability that a person in DETECTABLE state is found Negative in a test. This value should be much lower than P_test_error_infected.
    
-	P_test_error_contagious – (False-Negative) a probability that a person in contagious state is found Negative in a test. This value should be much lower than P_test_error_infected.
+	P_test_error_contagious – (False-Negative) a probability that a person in PRE-SYMPTOMATIC state is found Negative in a test. This value should be much lower than P_test_error_infected.
    
-	P_test_error_symptomatic – (False-Negative) a probability that a person in symptomatic state is found Negative in a test. This value should be much lower than P_test_error_infected.
+	P_test_error_symptomatic – (False-Negative) a probability that a person in SYMPTOMATIC or in ASYMPTOMATIC state is found Negative in a test. This value should be much lower than P_test_error_infected.
    
-	P_test_error_non_contagious – (False-Positive) a probability that a person in non-contagious state is found Positive in a test. This value should be according to the commonly known false-positive rate.
-
+	P_test_error_non_contagious – (False-Positive) a probability that a person in RECOVERED state is found Positive in a test. 
+	
 ### (3) simulation_inputs.txt file to set up parameters:
 1) Path of the spreadsheet 
    
@@ -127,7 +126,7 @@ For all risk factors, 5 (also denoted as max_rate) stands for “increased risk 
 3) The simulation start date
 
 ## Metrics
-Each simulation run yields a run_summary with the following quantitative metrics:
+Each simulation run yields a run_summary.txt file with the following quantitative metrics:
 1) Total Morbidity - total number of people that underwent the disease
 2) Peak Morbidity - the maximum number of ill people in a given day as inspected across the entire simulation.
 3) PQE(x) - personal quarantine efficiency of person x - given by the sum of the days the person was isolated and contagious divided by the sum of his isolation and illness days (sort of intersection-over-union)
