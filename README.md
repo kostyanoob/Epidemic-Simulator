@@ -6,11 +6,15 @@ collected. See our paper [TODO link to paper] for the extensive description of t
 
 In brief, the simulation respects the community graph of people associated with diffrent groups. See an example of a community graph below:
 
-<img src="Graph.PNG">
+<p align="center">
+<img src="Graph.PNG" width="60%">
+</p>
 
 Each person has the probability to bring the infection from outside the organization and to spread it within the groups he/she is associated with. Once the person becomes infected, his/her disease procceeds according to the state diagram below:
 
-<img src="FSM.PNG">
+<p align="center">
+<img src="FSM.PNG" width="60%">
+</p>
 
 Further, we introduce the notion of an agent - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page).
 
