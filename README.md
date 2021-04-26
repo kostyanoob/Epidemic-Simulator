@@ -44,9 +44,9 @@ environment called "covidsim" and install all the required packages into it.
 This was tested on Windows 10.
 1) Download or clone this Epidemic-Simulator repository
 2) Download the glpk solver from https://sourceforge.net/projects/winglpk/
-3) Extract and place it in "Solvers" directory in the projects home
+3) Extract and place it in "Solvers" directory in the project's home
    make sure that the solver executable is accessible at the following path:
-   Epidemic-Simulator/Solvers/glpk-4.65/w64/glpsol.exe
+   <project-home>/Solvers/glpk-4.65/w64/glpsol.exe
 4) Run the following commands in the command prompt:
 ```
 conda create -n covidsim python=3.8.3
@@ -80,7 +80,7 @@ After a successful installation, you can use the simulator to simulate the disea
 
 For the simulator to work, you need 3 things: Excel file describing the dataset, Yaml file describing global configurations, txt file with some initial setup lines to start the simulation.
 Below, I elaborate on how these files should be stuctured (you can also just use the attached "two_clusters" dataset as a reference).
-### (1) Excel (xlsx) file
+### (1) Excel (xlsx) file in the "Dataset" directory
 The Excel (xlsx) describes the simulated community graph, and the attributes of the individuals and of the groups. It must contain with five sheets:
 
 1) "Organization" - people names and the groups they are associated with. You only need to maintain the first 5 column names(change the content in the rows below the header row), and you can modify the rest of the columns (the group association columns) by changing their names, adding more or removing some. 
@@ -91,7 +91,7 @@ The Excel (xlsx) describes the simulated community graph, and the attributes of 
  
 For all risk factors, 5 (also denoted as max_rate) stands for “increased risk of infection” when 0 means “reduced risk of infection”.
 
-### (2) YAML  extension file to set up the Risk Manager this defines:
+### (2) YAML file in the "Configurations" directory
 1) weights for the individuals external risk factors.
 2) weights for the individuals internal risk factors.
 3) weights for the groups' risk factors.
@@ -123,16 +123,19 @@ For all risk factors, 5 (also denoted as max_rate) stands for “increased risk 
 	P_test_error_non_contagious – (False-Positive) a probability that a person in RECOVERED state is found Positive in a test. 
 	
 ### (3) simulation_inputs.txt file to set up parameters:
-1) Path of the spreadsheet 
+1) Path of the dataset Excel file 
    
-2) Path of the .yaml file
+2) Path of the configuration YAML file
 
-3) The simulation start date
+3) The simulation start date (this is important since inside the Excel file there is a date-sensitive information, on purpose.)
 
 ## Metrics
 Each simulation run yields a run_summary.txt file with the following quantitative metrics:
-1) Total Morbidity - total number of people that underwent the disease
+1) Total Morbidity - total number of people that underwent the disease (split into ones that were infected externally and ones that were infected from the inside of the community)
 2) Peak Morbidity - the maximum number of ill people in a given day as inspected across the entire simulation.
 3) PQE(x) - personal quarantine efficiency of person x - given by the sum of the days the person was isolated and contagious divided by the sum of his isolation and illness days (sort of intersection-over-union)
 4) mPQE(x) - mean personal quarantine efficiency - an average across all the PQEx scores of all the people in the simulated community.
 5) GQE - global quarantine efficiency - a ratio between the total human-days during which ill people were isolated and the sum of the illness + isolation days (again, this is sort of an intersection-over-union metric, but this time it treats each human-day equally rather than treating each person equally was the case in mPQE).
+6) Number of quarantined people
+7) Agent efficiency counters: percentage of human-days (our of all peopl*simulation_duration) during which the person was "healhy and not-quarantined", "contagiouos and quarantined", "healthy and quarantined", "contagious and non-quarantined".
+In addition, the simulator produces various figures (different figures for single simulation and for batched runs). The simulator can also output 2 very useful log files: ```Daily_logs.csv``` and ```Isolation_logs.csv``` that describe the illness state of each person (according to the FSM) and whether the person is quarantined. These logs are very descriptive as they describe the state of each person at each day. 
