@@ -25,6 +25,8 @@ The following commands will create a conda
 environment called "covidsim" and install all the required packages into it. 
 This was tested on Ubuntu 18.04.
 ```
+git clone https://github.com/kostyanoob/Epidemic-Simulator.git
+cd Epidemic-Simulator
 conda create -n covidsim python=3.8.3
 source activate covidsim
 pip install -r requirements.txt
@@ -36,11 +38,12 @@ sudo apt-get install glpk-utils
 The following commands will create a conda 
 environment called "covidsim" and install all the required packages into it. 
 This was tested on Windows 10.
-1) Download the glpk solver from https://sourceforge.net/projects/winglpk/
-2) Extract and place it in "Solvers" directory in the projects home
+1) Download or clone this Epidemic-Simulator repository
+2) Download the glpk solver from https://sourceforge.net/projects/winglpk/
+3) Extract and place it in "Solvers" directory in the projects home
    make sure that the solver executable is accessible at the following path:
-   Solvers/glpk-4.65/w64/glpsol.exe
-3) Run the following commands in the command prompt:
+   Epidemic-Simulator/Solvers/glpk-4.65/w64/glpsol.exe
+4) Run the following commands in the command prompt:
 ```
 conda create -n covidsim python=3.8.3
 source activate covidsim
