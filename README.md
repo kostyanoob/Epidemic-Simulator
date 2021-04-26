@@ -4,19 +4,23 @@ This software simulates the spread of a contagious disease in an organization/ne
 Testing and isolation strategies can be examined during the simulation and useful metrics are 
 collected. See our paper [TODO link to paper] for the extensive description of the probabilistic implemented in our simulator.
 
-In brief, the simulation respects the community graph of people associated with different groups. See an example of a community graph below, where 14 people ( 9 students, 3 teachers a manager and a secretary) are associated with 3 groups (Class 1, Class 2, and Management). Each person can belong to 0 or more groups:
+In brief, the simulation respects the **community graph** of people associated with different groups. See an example of a community graph below, where 14 people ( 9 students, 3 teachers a manager and a secretary) are associated with 3 groups (Class 1, Class 2, and Management). Each person can belong to 0 or more groups:
 
 <p align="center">
-<img src="Graph.PNG" width="60%">
+<img src="Figures/Graph.PNG" width="60%">
 </p>
 
-Each person has the probability to bring the infection from outside the organization and to spread it within the groups he/she is associated with. Once the person becomes infected, his/her disease proceeds according to the state diagram below:
+Each person has the probability to bring the infection from outside the community and to spread it within the groups he/she is associated with. Once the person becomes infected, his/her disease proceeds according to the **illness state diagram** below:
 
 <p align="center">
-<img src="FSM.PNG" width="60%">
+<img src="Figures/FSM.PNG" width="60%">
 </p>
 
-Further, we introduce the notion of an agent - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page).
+Further, we introduce the notion of an **agent** - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. We provide 5 built in agents: _nopolicy_ - do not quarantine people; _Symp_ - symptom based quarantine, the first day a person shows symptoms - he/she is quarantined; _Rand(B)_ - Random samping of B people every day, sending them to test and quarantining the positives; _RFG(B)_ - Risk Factor Greedy approach ranks the people according to their risk factors and sends the top-B to testing, quarantine is applied to the positively tested ones; _Optimization_ - choosing B people by solving a linear program that aims to fairly select people from all the groups, then the B selected people are sent for testing and the positives go to quarantine. Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page). For a high-level interaction between the simulator and the agent, refer to the image below:
+
+<p align="center">
+<img src="Figures/Agent_Simulator.PNG" width="60%">
+</p>
 
 ## Installation
 The installaion requires Python 3.8.3.  
