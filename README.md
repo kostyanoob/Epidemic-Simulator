@@ -130,12 +130,13 @@ For all risk factors, 5 (also denoted as max_rate) stands for “increased risk 
 3) The simulation start date (this is important since inside the Excel file there is a date-sensitive information, on purpose.)
 
 ## Metrics
-Each simulation run yields a run_summary.txt file with the following quantitative metrics:
+Each simulation run yields a ```run_summary.txt``` file with the following quantitative metrics:
 1) Total Morbidity - total number of people that underwent the disease (split into ones that were infected externally and ones that were infected from the inside of the community)
 2) Peak Morbidity - the maximum number of ill people in a given day as inspected across the entire simulation.
 3) PQE(x) - personal quarantine efficiency of person x - given by the sum of the days the person was isolated and contagious divided by the sum of his isolation and illness days (sort of intersection-over-union)
 4) mPQE(x) - mean personal quarantine efficiency - an average across all the PQEx scores of all the people in the simulated community.
 5) GQE - global quarantine efficiency - a ratio between the total human-days during which ill people were isolated and the sum of the illness + isolation days (again, this is sort of an intersection-over-union metric, but this time it treats each human-day equally rather than treating each person equally was the case in mPQE).
 6) Number of quarantined people
-7) Agent efficiency counters: percentage of human-days (our of all peopl*simulation_duration) during which the person was "healhy and not-quarantined", "contagiouos and quarantined", "healthy and quarantined", "contagious and non-quarantined".
-In addition, the simulator produces various figures (different figures for single simulation and for batched runs). The simulator can also output 2 very useful log files: ```Daily_logs.csv``` and ```Isolation_logs.csv``` that describe the illness state of each person (according to the FSM) and whether the person is quarantined. These logs are very descriptive as they describe the state of each person at each day. 
+7) Agent efficiency counters: percentage of human-days (our of all people*simulation_duration) during which the person was "healhy and not-quarantined", "contagiouos and quarantined", "healthy and quarantined", "contagious and non-quarantined".
+
+In addition, the simulator produces various plot figures (different figures for single simulation and for batched runs). The simulator can also output 2 very useful log files: ```Daily_logs.csv``` and ```Isolation_logs.csv``` that describe the illness state of each person (according to the FSM) and whether the person is quarantined. These logs are very descriptive as they describe the state of each person at each day. 
