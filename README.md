@@ -6,12 +6,13 @@ collected. See our paper [TODO link to paper] for the extensive description of t
 
 In brief, the simulation respects the community graph of people associated with diffrent groups. See an example of a community graph below:
 
-<img src="Results/Graph.eps" width="400" height="400" align="center">
+<img src="Results/Graph.png" width="500" height="500">
 
-Each person has the probability to bring the infection from outside the organization and to spread it within the groups he/she is associated with. Once the person becomes infected, the his/her illness procceeds according to the state diagram below:
-<img src="Results/FSM.eps" width="400" height="400" align="center">
+Each person has the probability to bring the infection from outside the organization and to spread it within the groups he/she is associated with. Once the person becomes infected, his/her disease procceeds according to the state diagram below:
 
+<img src="Results/FSM.png" width="500" height="500">
 
+Further, we introduce the notion of an agent - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page).
 
 ## Installation
 The installaion requires Python 3.8.3.  
@@ -62,9 +63,10 @@ The morbidity curves, indicating the number of ill people (at different illness 
 
 ## Usage
 
-After a successful installation, you can use the simulator to simulate the disease spread on a dataset (or a community) of your own.
+After a successful installation, you can use the simulator to simulate the disease spread on a dataset (or a community) of your own. There are 2 ways to run the simulator: (1) single run using ```main.py``` and a batched run using ```batch.py```. The Single run performs 1 simulation "game", and provides the run summary for this run only. The batched execution allows repetitive evaluation of the isolation and testing techniques (with different random seeds) for a statistical significance of the experiments and for a cross-comparison betwen several isolation methods.
+
 For the simulator to work, you need 3 things: Excel file describing the dataset, Yaml file describing global configurations, txt file with some initial setup lines to start the simulation.
-Below, I elaborate on how these files should be stuctured (you can also just use the attached "two_clusters" dataset as a reference)
+Below, I elaborate on how these files should be stuctured (you can also just use the attached "two_clusters" dataset as a reference).
 ### (1) Excel (xlsx) spreadsheet with five (05) sheets:
 The Excel (xlsx) describes the simulated community graph, and the attributes of the individuals. 
 It must contain with five (05) sheets:
@@ -114,3 +116,11 @@ For all risk factors, 5 (also denoted as max_rate) stands for “increased risk 
 2) Path of the .yaml file
 
 3) The simulation start date
+
+## Metrics
+Each simulation run yields a run_summary with the following quantitative metrics:
+1) Total Morbidity - total number of people that underwent the disease
+2) Peak Morbidity - the maximum number of ill people in a given day as inspected across the entire simulation.
+3) PQE(x) - personal quarantine efficiency of person x - given by the sum of the days the person was isolated and contagious divided by the sum of his isolation and illness days (sort of intersection-over-union)
+4) mPQE(x) - mean personal quarantine efficiency - an average across all the PQEx scores of all the people in the simulated community.
+5) GQE - global quarantine efficiency - a ratio between the total human-days during which ill people were isolated and the sum of the illness + isolation days (again, this is sort of an intersection-over-union metric, but this time it treats each human-day equally rather than treating each person equally was the case in mPQE).
