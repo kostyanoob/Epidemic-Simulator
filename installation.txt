@@ -1,0 +1,16 @@
+On linux:
+conda create -n covidsim python=3.8.3
+source activate covidsim
+pip install -r requirements.txt
+sudo apt-get install python-glpk
+sudo apt-get install glpk-utils
+
+
+On windows: 
+conda create -n covidsim python=3.8.3
+source activate covidsim
+pip install -r requirements.txt
+1) download the glpk solver from https://sourceforge.net/projects/winglpk/
+2) Extract and put it in "Solvers" directory in the projects home
+   make sure that the solver executable is accessible at the following path:
+   Solvers/glpk-4.65/w64/glpsol.exe

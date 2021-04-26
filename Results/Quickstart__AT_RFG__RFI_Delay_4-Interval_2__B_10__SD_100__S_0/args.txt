@@ -1,0 +1,21 @@
+{
+  "agent_type": "RFG",
+  "return_from_isolations": "Delay_4-Interval_2",
+  "simulation_duration": 100,
+  "test_range": 5,
+  "budget": 10,
+  "output_dir": "Results",
+  "run_dir_name_prefix": "Quickstart",
+  "simulation_inputs_filepath": "simulation_inputs_two_clusters.txt",
+  "seed": 0,
+  "output_products": [
+    "args",
+    "run_summary",
+    "Daily_logs",
+    "Isolation_logs",
+    "all_states_breakdown_daily",
+    "illness_states_only_breakdown_daily",
+    "infection_probability_per_group_daily",
+    "ill_person_count_per_group_daily"
+  ]
+}
