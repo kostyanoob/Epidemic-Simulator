@@ -32,7 +32,7 @@ parser.add_argument('-run_dir_name_prefix', '-RDNP', type=str,
                     help="Prefix of the individual directory to contain this run's products. This directory will be "
                          "created inside the output_dir")
 parser.add_argument('-simulation_inputs_filepath', '-SIF', type=str,
-                    default='simulation_inputs_singleschool.txt',
+                    default='simulation_inputs_two_clusters.txt',
                     help="Path to a file containing some extra simulation parameters")
 parser.add_argument('-seed', '-S', type=int,
                     default=0,

@@ -1,6 +1,6 @@
 """
-This script reads the 4 datasets and computes graph-related characteristics of
-the underlying community graphs of these dataasets. Among the characteristics,
+This script reads the datasets and computes graph-related characteristics of
+the underlying community graphs of these datasets. Among the characteristics,
 there are the graph diameter, the expansion ratio of random groups of different
 sizes.
 (expansion ratio of a group is by how much a the size given group smaller than the
@@ -14,8 +14,7 @@ import numpy as np
 np.random.seed(0)
 output_dir = "Dataset"
 run_dirname = "Graph_Metrics"
-input_filepath_list = ["simulation_inputs_singleschool.txt", "simulation_inputs_singleschool_wandering.txt",
-                       "simulation_inputs_multischool_families.txt", "simulation_inputs_multischool_friends.txt"]
+input_filepath_list = ["simulation_inputs_two_clusters.txt"]
 num_people_list = [150, 150, 1000, 1000]
 for input_filepath, num_people in zip(input_filepath_list, num_people_list):
     dataset_name = input_filepath.split(".")[0][18:]

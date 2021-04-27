@@ -114,7 +114,7 @@ if __name__ == '__main__':
                              "prefix of the individual directories to contain each individual run's products (in "
                              "case at least one output product was requested).")
     parser.add_argument('-simulation_inputs_filepath', '-SIF', type=str,
-                        default='simulation_inputs_singleschool.txt',
+                        default='simulation_inputs_two_clusters.txt',
                         help="Path to a file containing some extra simulation parameters")
     parser.add_argument('-output_products', '-OP', action='store', dest='output_products',
                         type=str, nargs='*',
