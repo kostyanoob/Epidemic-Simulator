@@ -67,14 +67,15 @@ will contain the plots, and the metrics collected from the simulation.
 
 For Linux run the script using ```sh sample_runs.sh``` command. In Windows just click on the ```sample_runs.bat``` or run it in the command prompt.
 
-The morbidity curves, indicating the number of ill people (at different illness stages) during each day, will look as follows (the no-policy is on the left-hand-side, whereas the optimization-based is on the right-hand-side side):
+The morbidity curves, indicating the number of ill people (at different illness stages) during each day, will look as follows (the no-policy is on the top left, whereas the optimization-based is on the bottom right):
 
 <p align="center">
-<img src="Results/Quickstart__AT_nopolicy__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="19%">
-<img src="Results/Quickstart__AT_Symp__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="19%">
-<img src="Results/Quickstart__AT_Rand__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="19%">
-<img src="Results/Quickstart__AT_RFG__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="19%">
-<img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="19%">
+<img src="Results/Quickstart__AT_nopolicy__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="30%">
+<img src="Results/Quickstart__AT_Symp__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="30%">
+<img src="Results/Quickstart__AT_Rand__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="30%">
+<br>
+<img src="Results/Quickstart__AT_RFG__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="30%">
+<img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="30%">
 </p>
 
 ## Usage
