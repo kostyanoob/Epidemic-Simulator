@@ -55,9 +55,10 @@ pip install -r requirements.txt
 ```
 
 ## Quick Start
-The following script executes 5 simulation runs of a "two_clusters" dataset, a hundred people community where people are clustered into two group clusters with 2 people associated with both of these clusters (check out a [sketch of this graph](https://github.com/kostyanoob/Epidemic-Simulator/blob/main/Dataset/two_clusters/Organization_structure.png)). 
-Each run simulates 100 days during which the disease attempts to spread in the 
-organization and each run focuses on one of 5 testing and isolation techniques
+We provide and example dataset named "two_clusters" dataset, a hundred people company and 8 groups. The connectivity of the people forms 2 two group clusters with only 2 people associated with both of these clusters (check out a [sketch of this graph](https://github.com/kostyanoob/Epidemic-Simulator/blob/main/Dataset/two_clusters/Organization_structure.png)). 
+
+The following script executes 5 simulation runs of a "two_clusters" dataset, each run simulates 100 days during which the disease attempts to spread in the 
+community and each run focuses on one of 5 testing and isolation techniques
 (no-policy, Symptom-based, Random-testing, Risk-factor-greedy, Optimization-based). 
 For each of the runs, a separate subdirectory will be created under "Results" directory, and it
 will contain the plots, and the metrics collected from the simulation.
