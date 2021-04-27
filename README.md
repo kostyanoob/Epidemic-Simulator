@@ -122,8 +122,8 @@ For all risk factors, 5 (also denoted as max_rate) stands for “increased risk 
 
 ## Metrics
 When performing a **single simulation** run, the simulator produces a ```run_summary.txt``` file with the following quantitative metrics:
-1) Total Morbidity - total number of people that underwent the disease (split into ones that were infected externally and ones that were infected from the inside of the community)
-2) Peak Morbidity - the maximum number of ill people in a given day as inspected across the entire simulation.
+1) Morbidity(t) - number of ill people on day t.
+2) Total Morbidity(t) - cumulative number of people that were infected with the disease until day t. This number can be broken to people that were infected externally and people that were infected from the inside of the community.
 3) PQE(x) - personal quarantine efficiency of person x - given by the sum of the days the person was isolated and contagious divided by the sum of his isolation and illness days (sort of intersection-over-union)
 4) mPQE(x) - mean personal quarantine efficiency - an average across all the PQEx scores of all the people in the simulated community.
 5) GQE - global quarantine efficiency - a ratio between the total human-days during which ill people were isolated and the sum of the illness + isolation days (again, this is sort of an intersection-over-union metric, but this time it treats each human-day equally rather than treating each person equally was the case in mPQE).
@@ -139,7 +139,7 @@ In addition, the simulator can also output 2 very useful log files: ```Daily_log
 <img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/infection_probability_per_group_daily.png" width="24%">
 </p>
 
-When performing a **batched run**, exploring several test budgets and several agents (i.e. isolation and testing strategies) the simulator creates plots showing with the average metrics (GQE, mPQE, Morbidity, etc.) as a function of the daily test budget. Standard deviation bars are shown as well (computed across the repetitions of the batch with different random seeds). Below are some examples for the plots produced in a batched simulation over a larger community (1000 people). Upper row left to right: GQE, mPQE, Isolated people count, bar plot showing ill and isolated people-day count in green, ill and non-isolated people-days count in red, healthy and isolated people-days count in gray. Bottom row: peak morbidity, total morbidity (total count of infected people), total count of people who were infected externally, total count of people who were infected internally.
+When performing a **batched run**, exploring several test budgets and several agents (i.e. isolation and testing strategies) the simulator creates plots showing with the average metrics gathered across the entire simulation (GQE, mPQE, Peak Morbidity, Total Morbidity, etc.) as a function of the daily test budget. Standard deviation bars are shown as well (computed across the repetitions of the batch with different random seeds). Below are some examples for the plots produced in a batched simulation over a larger community (1000 people). Upper row left to right: GQE, mPQE, Isolated people count, bar plot showing ill and isolated people-day count in green, ill and non-isolated people-days count in red, healthy and isolated people-days count in gray. Bottom row: peak morbidity, total morbidity (total count of infected people), total count of people who were infected externally, total count of people who were infected internally.
 
 <p align="center">
 <img src="Figures/GQE.png" width="24%">
