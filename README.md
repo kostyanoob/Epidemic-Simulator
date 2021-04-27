@@ -10,17 +10,19 @@ In brief, the simulation respects the **hyper-graph** of people associated with 
 <img src="Figures/Graph.PNG" width="60%">
 </p>
 
-Each person has the probability to bring the infection from outside the community anda probability to spread it within the groups he/she is associated with. The computation of these probabilities is elaborated in the paper. Once the person becomes infected, his/her disease proceeds according to the **illness state diagram** below:
+Each person has the probability to bring the infection from outside the community, and a probability to spread it within the groups he/she is associated with. The computation of these probabilities is elaborated in the paper. Once the person becomes infected, his/her disease proceeds according to the **illness state diagram** below:
 
 <p align="center">
 <img src="Figures/FSM.PNG" width="60%">
 </p>
 
-Further, we introduce the notion of an **agent** - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. We provide 5 built in agents: _nopolicy_ - do not quarantine people; _Symp_ - symptom based quarantine, the first day a person shows symptoms - he/she is quarantined; _Rand(B)_ - Random sampling of B people every day, sending them to test and quarantining the positives; _RFG(B)_ - Risk Factor Greedy approach ranks the people according to their risk factors and sends the top-B to testing, quarantine is applied to the positively tested ones; _Optimization_ - choosing B people by solving a linear program that aims to fairly select people from all the groups, then the B selected people are sent for testing, and the positives go to quarantine. Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page). For a high-level interaction between the simulator and the agent, refer to the image below:
+Further, we introduce the notion of an **agent** - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. We provide 5 built in agents: _nopolicy_ - do not quarantine people; _Symp_ - symptom based quarantine, the first day a person shows symptoms - he/she is quarantined; _Rand(B)_ - Random sampling of B people every day, sending them to test and quarantining the positives; _RFG(B)_ - Risk Factor Greedy approach ranks the people according to their risk factors and sends the top-B to testing, quarantine is applied to the positively tested ones; _Optimization_ - choosing B people by solving a linear program that aims to fairly select people from all the groups, then the B selected people are sent for testing, and the positives go to quarantine. The simulator can be configured with test-error probabilities for each illness state individually (see YAML file subsection below), such that when a person is tested, an erroneous result can be drawn.
 
 <p align="center">
 <img src="Figures/Agent_Simulator.PNG" width="60%">
 </p>
+
+Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page). For a high-level interaction between the simulator and the agent, refer to the image below:
 
 ## Installation
 The installation requires Python 3.8.3.  
@@ -130,7 +132,7 @@ When performing a **single simulation** run, the simulator produces a ```run_sum
 6) Number of quarantined people
 7) Agent efficiency counters: percentage of human-days (our of all people*simulation_duration) during which the person was "healthy and not-quarantined", "contagious and quarantined", "healthy and quarantined", "contagious and non-quarantined".
 
-In addition, the simulator can also output 2 very useful log files: ```Daily_logs.csv``` and ```Isolation_logs.csv``` that describe the illness state of each person (according to the FSM) and whether the person is quarantined. These logs are very descriptive as they describe the state of each person at each day. Moreover, the simulator produces various plot figures (different figures for single simulation and for batched runs). Example of the produced plots are presented below (left to right): Total morbidity over time, Apparent morbidity at each day, Ill people count per group as a function of time, Probability for an outbreak per group as a function of time.
+In addition, the simulator can also output 2 very useful log files: ```Daily_logs.csv``` and ```Isolation_logs.csv``` that describe the illness state of each person (according to the FSM) and whether the person is quarantined. These logs are very descriptive as they describe the state of each person at each day. Moreover, the simulator produces various plot figures (different figures for single simulation and for batched runs). Example of the produced plots are presented below (left to right): Total morbidity over time, Apparent morbidity at each day, ill people count per group as a function of time, Probability for an outbreak per group as a function of time.
 
 <p align="center">
 <img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/all_states_breakdown_daily.png" width="24%">
