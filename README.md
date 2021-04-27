@@ -55,7 +55,7 @@ pip install -r requirements.txt
 ```
 
 ## Quick Start
-We provide and example dataset named "two_clusters" dataset, a hundred people company and 8 groups. The connectivity of the people forms 2 two group clusters with only 2 people associated with both of these clusters (check out a [sketch of this graph](https://github.com/kostyanoob/Epidemic-Simulator/blob/main/Dataset/two_clusters/Organization_structure.png)). 
+We provide an example dataset named "two_clusters" dataset, a hundred people company and 8 groups. The connectivity of the people forms 2 two group clusters with only 2 people associated with both of these clusters (check out a [sketch of this graph](https://github.com/kostyanoob/Epidemic-Simulator/blob/main/Dataset/two_clusters/Organization_structure.png)). 
 
 The following script executes 5 simulation runs of a "two_clusters" dataset, each run simulates 100 days during which the disease attempts to spread in the 
 community and each run focuses on one of 5 testing and isolation techniques
@@ -99,29 +99,19 @@ For all risk factors, 5 (also denoted as max_rate) stands for “increased risk 
 4) f_neg and f_pos function shapes (used for discounting the risk of the infection)
 5) time_variables (in days) with their corresponding expectations and standard deviations. These means and standard deviations (STD) parameterize the corresponding gaussian (and exponential) distributions from which the illness stage durations will be sampled during the simulation (an independent drawing for each illness session).
     
-	(t1,s1) : Mean, STD of Gaussian distribution from which the simulator draws T1 - the duration of the INFECTED stage.
-	
-	(t2,s2) : Mean, STD of Gaussian distribution from which the simulator draws T2 - the duration of the DETECTABLE stage.
-   
-	(t3,s3): Mean, STD of Gaussian distribution from which the simulator draws T3 - the duration of the CONTAGIOUS-A-SYMPTOMATIC stage.
-   
-	(t4,s4): Shift,lambda parameter of Exponential distribution, from which the simulator draws T4 - the duration the CONTAGIOUS-PRE-SYMPTOMATIC stage.
-   
-	(t5,s5): Mean, STD of Gaussian distribution, from which the simulator draws T5 - the duration the CONTAGIOUS-SYMPTOMATIC stage.
+   * (t1,s1) : Mean, STD of Gaussian distribution from which the simulator draws T1 - the duration of the INFECTED stage.
+   * (t2,s2) : Mean, STD of Gaussian distribution from which the simulator draws T2 - the duration of the DETECTABLE stage.
+   * (t3,s3): Mean, STD of Gaussian distribution from which the simulator draws T3 - the duration of the CONTAGIOUS-A-SYMPTOMATIC stage.
+   * (t4,s4): Shift,lambda parameter of Exponential distribution, from which the simulator draws T4 - the duration the CONTAGIOUS-PRE-SYMPTOMATIC stage.
+   * (t5,s5): Mean, STD of Gaussian distribution, from which the simulator draws T5 - the duration the CONTAGIOUS-SYMPTOMATIC stage.
    
 6) Test error probabilities  (in [0,1] fractions) to represent the probability of returning a wrong test result of person x as a function of the state x resides at:
-   
-	P_test_error_idle – (False-Positive) a probability that a person in SUSCEPTIBLE state is found Positive in a test. This value should be according to the commonly known false-positive rate.
-   
-	P_test_error_infected – (False-Negative), a probability that a person in INFECTED state is found Negative in a test. This value should be quite high since the person is still not reached the detectable state.
-   
-	P_test_error_detectable – (False-Negative) a probability that a person in DETECTABLE state is found Negative in a test. This value should be much lower than P_test_error_infected.
-   
-	P_test_error_contagious – (False-Negative) a probability that a person in PRE-SYMPTOMATIC state is found Negative in a test. This value should be much lower than P_test_error_infected.
-   
-	P_test_error_symptomatic – (False-Negative) a probability that a person in SYMPTOMATIC or in ASYMPTOMATIC state is found Negative in a test. This value should be much lower than P_test_error_infected.
-   
-	P_test_error_non_contagious – (False-Positive) a probability that a person in RECOVERED state is found Positive in a test. 
+   * P_test_error_idle – (False-Positive) a probability that a person in SUSCEPTIBLE state is found Positive in a test. This value should be according to the commonly known false-positive rate.
+   * P_test_error_infected – (False-Negative), a probability that a person in INFECTED state is found Negative in a test. This value should be quite high since the person is still not reached the detectable state.
+   * P_test_error_detectable – (False-Negative) a probability that a person in DETECTABLE state is found Negative in a test. This value should be much lower than P_test_error_infected.
+   * P_test_error_contagious – (False-Negative) a probability that a person in PRE-SYMPTOMATIC state is found Negative in a test. This value should be much lower than P_test_error_infected.
+   * P_test_error_symptomatic – (False-Negative) a probability that a person in SYMPTOMATIC or in ASYMPTOMATIC state is found Negative in a test. This value should be much lower than P_test_error_infected.
+   * P_test_error_non_contagious – (False-Positive) a probability that a person in RECOVERED state is found Positive in a test. 
 	
 ### (3) simulation_inputs.txt file to set up parameters:
 1) Path of the dataset Excel file 
