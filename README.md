@@ -76,7 +76,7 @@ The morbidity curves, indicating the number of ill people (at different illness 
 
 ## Usage
 
-After a successful installation, you can use the simulator to simulate the disease spread on a dataset (or a community) of your own. There are 2 ways to run the simulator: single run using ```main.py``` and a batched run using ```batch.py```. The Single run performs 1 simulation "game", and provides the run summary for this run only. The batched execution allows repetitive evaluation of the isolation and testing techniques (with different random seeds) for a statistical significance of the experiments and for a cross-comparison between several isolation methods.
+After a successful installation, you can use the simulator to simulate the disease spread on a dataset (or a community) of your own. There are 2 ways to run the simulator: **single run** using ```main.py``` and a **batched run** using ```batch.py```. The Single run performs 1 simulation "game", and provides the run summary for this run only. The batched execution allows repetitive evaluation of the isolation and testing techniques (with different random seeds) for a statistical significance of the experiments and for a cross-comparison between several isolation methods.
 
 For the simulator to work, you need 3 things: Excel file describing the dataset, Yaml file describing global configurations, txt file with some initial setup lines to start the simulation.
 Below, I elaborate on how these files should be structured (you can also just use the attached "two_clusters" dataset as a reference).
@@ -139,18 +139,16 @@ When performing a **single simulation** run, the simulator produces a ```run_sum
 6) Number of quarantined people
 7) Agent efficiency counters: percentage of human-days (our of all people*simulation_duration) during which the person was "healthy and not-quarantined", "contagious and quarantined", "healthy and quarantined", "contagious and non-quarantined".
 
-In addition, the simulator can also output 2 very useful log files: ```Daily_logs.csv``` and ```Isolation_logs.csv``` that describe the illness state of each person (according to the FSM) and whether the person is quarantined. These logs are very descriptive as they describe the state of each person at each day. Moreover, the simulator produces various plot figures (different figures for single simulation and for batched runs). Example of the produced plots:
+In addition, the simulator can also output 2 very useful log files: ```Daily_logs.csv``` and ```Isolation_logs.csv``` that describe the illness state of each person (according to the FSM) and whether the person is quarantined. These logs are very descriptive as they describe the state of each person at each day. Moreover, the simulator produces various plot figures (different figures for single simulation and for batched runs). Example of the produced plots are presented below (left to right): Total morbidity over time, Apparent morbidity at each day, Ill people count per group as a function of time, Probability for an outbreak per group as a function of time.
 
 <p align="center">
 <img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/all_states_breakdown_daily.png" width="24%">
-<img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/ill_person_count_per_group_daily.png" width="24%">
 <img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/illness_states_only_breakdown_daily.png" width="24%">
+<img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/ill_person_count_per_group_daily.png" width="24%">
 <img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/infection_probability_per_group_daily.png" width="24%">
 </p>
 
-
-
-When performing a **batched run**, exploring several test budgets and several agents (i.e. isolation and testing strategies) the simulator creates plots showing with the average metrics (GQE, mPQE, Morbidity, etc.) as a function of the daily test budget. Standard deviation bars are shown as well (computed across the repetitions of the batch with different random seeds). Below are some examples for the plots produced in a batched simulation over a larger (1000 people dataset)
+When performing a **batched run**, exploring several test budgets and several agents (i.e. isolation and testing strategies) the simulator creates plots showing with the average metrics (GQE, mPQE, Morbidity, etc.) as a function of the daily test budget. Standard deviation bars are shown as well (computed across the repetitions of the batch with different random seeds). Below are some examples for the plots produced in a batched simulation over a larger community (1000 people). Upper row left to right: GQE, mPQE, Isolated people count, bar plot showing ill and isolated people-day count in green, ill and non-isolated people-days count in red, healthy and isolated people-days count in gray. Bottom row: peak morbidity, total morbidity (total count of infected people), total count of people who were infected externally, total count of people who were infected internally.
 
 <p align="center">
 <img src="Figures/GQE.png" width="24%">
@@ -164,8 +162,8 @@ When performing a **batched run**, exploring several test budgets and several ag
 <img src="Figures/-Infected_internally.png" width="24%">
 </p>
 
-## Extra features
-Another couple of useful features are ```explore_graph.py``` and ```explore_data.py```. 
+## Extra tools
+Another couple of useful tools are ```explore_graph.py``` and ```explore_data.py```. 
 
 The ```explore_graph.py``` analyzes your dataset (Excel file) and shows interesting statistics regarding the connectivity of the graph (inter-people connectivity, such as radius and expansion ratio). 
 
