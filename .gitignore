@@ -1,12 +1,6 @@
 Solvers
 Results
 !Dataset/Quickstart*
-.idea/Epidemic-Simulator.iml
-.idea/inspectionProfiles/profiles_settings.xml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/workspace.xml
+.idea
 __pycache__
 Util/__pycache__*
