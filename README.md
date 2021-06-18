@@ -2,7 +2,7 @@
 
 This software simulates the spread of a contagious disease in a community (organization, neighborhood, city, etc.). 
 Testing and isolation strategies can be examined during the simulation and useful metrics are 
-collected. See our paper [link to the paper will be posted upon acceptance] for the extensive description of the probabilistic implemented in our simulator.
+collected. See our paper [link to the paper will be posted upon acceptance] for the extensive description of the probabilistic model implemented in our simulator.
 
 In brief, the simulation respects the **hyper-graph** of people associated with different groups. See an example of a graph below, where 14 people ( 9 students, 3 teachers a manager and a secretary) are associated with 3 groups (Class 1, Class 2, and Management). Each person can belong to 0 or more groups:
 
@@ -16,13 +16,13 @@ Each person has the probability to bring the infection from outside the communit
 <img src="Figures/FSM.PNG" width="60%">
 </p>
 
-Further, we introduce the notion of an **agent** - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. We provide 5 built in agents: _nopolicy_ - do not quarantine people; _Symp_ - symptom based quarantine, the first day a person shows symptoms - he/she is quarantined; _Rand(B)_ - Random sampling of B people every day, sending them to test and quarantining the positives; _RFG(B)_ - Risk Factor Greedy approach ranks the people according to their risk factors and sends the top-B to testing, quarantine is applied to the positively tested ones; _Optimization_ - choosing B people by solving a linear program that aims to fairly select people from all the groups, then the B selected people are sent for testing, and the positives go to quarantine. The simulator can be configured with test-error probabilities for each illness state individually (see YAML file subsection below), such that when a person is tested, an erroneous result can be drawn.
+Further, we introduce the notion of a **policy** - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. We provide 5 built in policies: _nopolicy_ - do not quarantine people; _Symp_ - symptom based quarantine, the first day a person shows symptoms - he/she is quarantined; _Rand(B)_ - Random sampling of B people every day, sending them to test and quarantining the positives; _RFG(B)_ - Risk Factor Greedy approach ranks the people according to their risk factors and sends the top-B to testing, quarantine is applied to the positively tested ones; _Optimization_ - choosing B people by solving a linear program that aims to fairly select people from all the groups, then the B selected people are sent for testing, and the positives go to quarantine. The simulator can be configured with test-error probabilities for each illness state individually (see YAML file subsection below), such that when a person is tested, an erroneous result can be drawn.
 
 <p align="center">
 <img src="Figures/Agent_Simulator.PNG" width="60%">
 </p>
 
-Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page). For a high-level interaction between the simulator and the agent, refer to the image below:
+Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page). For a high-level interaction between the simulator and the policy, refer to the image below:
 
 ## Installation
 The installation requires Python 3.8.3.  
@@ -131,7 +131,7 @@ When performing a **single simulation** run, the simulator produces a ```run_sum
 4) mPQE(x) - mean personal quarantine efficiency - an average across all the PQEx scores of all the people in the simulated community.
 5) GQE - global quarantine efficiency - a ratio between the total human-days during which ill people were isolated and the sum of the illness + isolation days (again, this is sort of an intersection-over-union metric, but this time it treats each human-day equally rather than treating each person equally was the case in mPQE).
 6) Number of quarantined people
-7) Agent efficiency counters: percentage of human-days (our of all people*simulation_duration) during which the person was "healthy and not-quarantined", "contagious and quarantined", "healthy and quarantined", "contagious and non-quarantined".
+7) Policy efficiency counters: percentage of human-days (our of all people*simulation_duration) during which the person was "healthy and not-quarantined", "contagious and quarantined", "healthy and quarantined", "contagious and non-quarantined".
 
 In addition, the simulator can also output 2 very useful log files: ```Daily_logs.csv``` and ```Isolation_logs.csv``` that describe the illness state of each person (according to the FSM) and whether the person is quarantined. These logs are very descriptive as they describe the state of each person at each day. Moreover, the simulator produces various plot figures (different figures for single simulation and for batched runs). Example of the produced plots are presented below (left to right): Total morbidity over time, Apparent morbidity at each day, ill people count per group as a function of time, Probability for an outbreak per group as a function of time.
 
@@ -142,7 +142,7 @@ In addition, the simulator can also output 2 very useful log files: ```Daily_log
 <img src="Results/Quickstart__AT_Optimization__RFI_Delay_4-Interval_2__B_10__SD_100__S_0/infection_probability_per_group_daily.png" width="24%">
 </p>
 
-When performing a **batched run**, exploring several test budgets and several agents (i.e. isolation and testing strategies) the simulator creates plots showing with the average metrics gathered across the entire simulation (GQE, mPQE, Peak Morbidity, Total Morbidity, etc.) as a function of the daily test budget. Standard deviation bars are shown as well (computed across the repetitions of the batch with different random seeds). Below are some examples for the plots produced in a batched simulation over a larger community (1000 people). Upper row left to right: GQE, mPQE, Isolated people count, bar plot showing ill and isolated people-day count in green, ill and non-isolated people-days count in red, healthy and isolated people-days count in gray. Bottom row: peak morbidity, total morbidity (total count of infected people), total count of people who were infected externally, total count of people who were infected internally.
+When performing a **batched run**, exploring several test budgets and several policies (i.e. isolation and testing strategies) the simulator creates plots showing with the average metrics gathered across the entire simulation (GQE, mPQE, Peak Morbidity, Total Morbidity, etc.) as a function of the daily test budget. Standard deviation bars are shown as well (computed across the repetitions of the batch with different random seeds). Below are some examples for the plots produced in a batched simulation over a larger community (1000 people). Upper row left to right: GQE, mPQE, Isolated people count, bar plot showing ill and isolated people-day count in green, ill and non-isolated people-days count in red, healthy and isolated people-days count in gray. Bottom row: peak morbidity, total morbidity (total count of infected people), total count of people who were infected externally, total count of people who were infected internally.
 
 <p align="center">
 <img src="Figures/GQE.png" width="24%">
