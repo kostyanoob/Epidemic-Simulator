@@ -48,7 +48,7 @@ This was tested on Windows 10.
 2) Download the glpk solver from https://sourceforge.net/projects/winglpk
 3) Extract and place it in "Solvers" directory in the project's home
    make sure that the solver executable is accessible at the following path:
-   <project-home>/Solvers/glpk-4.65/w64/glpsol.exe
+   Epidemic-Simulator/Solvers/glpk-4.65/w64/glpsol.exe
 4) Run the following commands in the command prompt:
 ```
 conda create -n covidsim python=3.8.3
