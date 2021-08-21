@@ -127,10 +127,10 @@ For all risk factors, 5 (also denoted as max_rate) stands for “increased risk 
 
 ## Metrics
 When performing a **single simulation** run, the simulator produces a ```run_summary.txt``` file with the following quantitative metrics:
-1) Morbidity(t) - number of ill people on day t.
-2) Total Morbidity(t) - cumulative number of people that were infected with the disease until day t. This number can be broken to people that were infected externally and people that were infected from the inside of the community.
-3) PQE(x) - personal quarantine efficiency of person x - given by the sum of the days the person was isolated and contagious divided by the sum of his isolation and illness days (sort of intersection-over-union)
-4) mPQE(x) - mean personal quarantine efficiency - an average across all the PQEx scores of all the people in the simulated community.
+1) Peak Morbidity - number of ill people at any day during the simulation
+2) Total Morbidity - cumulative number of people that were infected with the disease during the simulation. This number can be broken to people that were infected externally and people that were infected from the inside of the community.
+3) PQE_x - personal quarantine efficiency of person x - given by the sum of the days the person was isolated and contagious divided by the sum of his isolation and illness days (sort of intersection-over-union)
+4) mPQE - mean personal quarantine efficiency - an average across all the PQEx scores of all the people in the simulated community.
 5) GQE - global quarantine efficiency - a ratio between the total human-days during which ill people were isolated and the sum of the illness + isolation days (again, this is sort of an intersection-over-union metric, but this time it treats each human-day equally rather than treating each person equally was the case in mPQE).
 6) Number of quarantined people
 7) Policy efficiency counters: percentage of human-days (our of all people*simulation_duration) during which the person was "healthy and not-quarantined", "contagious and quarantined", "healthy and quarantined", "contagious and non-quarantined".
