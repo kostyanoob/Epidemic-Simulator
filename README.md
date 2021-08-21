@@ -18,13 +18,13 @@ Each person has the probability to bring the infection from outside the communit
 <img src="Figures/FSM.PNG" width="60%">
 </p>
 
-Further, we introduce the notion of a **policy** - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. We provide 5 built in policies: _nopolicy_ - do not quarantine people; _Symp_ - symptom based quarantine, the first day a person shows symptoms - he/she is quarantined; _Rand(B)_ - Random sampling of B people every day, sending them to test and quarantining the positives; _RFG(B)_ - Risk Factor Greedy approach ranks the people according to their risk factors and sends the top-B to testing, quarantine is applied to the positively tested ones; _Optimization_ - choosing B people by solving a linear program that aims to fairly select people from all the groups, then the B selected people are sent for testing, and the positives go to quarantine. The simulator can be configured with test-error probabilities for each illness state individually (see YAML file subsection below), such that when a person is tested, an erroneous result can be drawn.
+Further, we introduce the notion of a **policy** - a way to interact with the simulator and to allow testing of the individuals (subject to a constrained daily test budget) and to isolate certain people. We provide 5 built in policies: _nopolicy_ - do not quarantine people; _Symp_ - symptom based quarantine, the first day a person shows symptoms - he/she is quarantined; _Rand(B)_ - Random sampling of B people every day, sending them to test and quarantining the positives; _RFG(B)_ - Risk Factor Greedy approach ranks the people according to their risk factors and sends the top-B to testing, quarantine is applied to the positively tested ones; _Optimization_ - choosing B people by solving a linear program that aims to fairly select people from all the groups, then the B selected people are sent for testing, and the positives go to quarantine. The simulator can be configured with test-error probabilities for each illness state individually (see [YAML file subsection](#2-yaml-file-in-the-configurations-directory)), such that when a person is tested, an erroneous result can be drawn.
 
 <p align="center">
 <img src="Figures/Agent_Simulator.PNG" width="60%">
 </p>
 
-Finally, the simulator provides useful metrics (see section "Metrics" down in the bottom of this page). For a high-level interaction between the simulator and the policy, refer to the image below:
+Finally, the simulator provides useful metrics (see section [Metrics](#metrics)). For a high-level interaction between the simulator and the policy, refer to the image below:
 
 ## Installation
 The installation requires Python 3.8.3.  
