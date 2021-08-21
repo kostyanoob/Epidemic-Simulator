@@ -6,7 +6,8 @@ collected. See our paper "Optimization of Resource-Constrained Policies for COVI
 
 :triangular_flag_on_post: **20 August 2021**: Our paper was ***accepted to the Journal of Communications and Networks (JCN)***. The paper will be published with an open access by the end of October 2021. [Cite us!](#cite-us)
 
-In brief, the simulation respects the **hyper-graph** of people associated with different groups. See an example of a graph below, where 14 people ( 9 students, 3 teachers a manager and a secretary) are associated with 3 groups (Class 1, Class 2, and Management). Each person can belong to 0 or more groups:
+## Briefly about the simulator
+The simulation respects the **hyper-graph** of people associated with different groups. See an example of a graph below, where 14 people ( 9 students, 3 teachers a manager and a secretary) are associated with 3 groups (Class 1, Class 2, and Management). Each person can belong to 0 or more groups:
 
 <p align="center">
 <img src="Figures/Graph.PNG" width="60%">
