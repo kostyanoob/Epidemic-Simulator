@@ -2,9 +2,12 @@
 
 This software simulates the spread of a contagious disease in a community (organization, neighborhood, city, etc.). 
 Testing and isolation strategies can be examined during the simulation and useful metrics are 
-collected. See our paper "Optimization of Resource-Constrained Policies for COVID-19 Testing and Quarantining" [link to the paper will be posted upon its release by the publisher](http://jcn.or.kr/html/?pmode=CallforPapers) for the extensive description of the probabilistic model implemented in our simulator.
+collected. See our paper ["Optimization of Resource-Constrained Policies for COVID-19 Testing and Quarantining"](http://jcn.or.kr/html/?pmode=BBBS0000800001&smode=ajax&fn=downFile&fileSeq=1896) for the extensive description of the probabilistic model implemented in our simulator.
 
-:triangular_flag_on_post: **20 August 2021**: Our paper was ***accepted to the Journal of Communications and Networks (JCN)***. The paper will be published with an open access by the end of October 2021. [Cite us!](#cite-us)
+:triangular_flag_on_post: **8 October 2021**: Our paper's [PDF](http://jcn.or.kr/html/?pmode=BBBS0000800001&smode=ajax&fn=downFile&fileSeq=1896) is now available in the JCN early open access page. [Cite us!](#cite-us)
+
+:triangular_flag_on_post: **20 August 2021**: Our paper was ***accepted to the Journal of Communications and Networks (JCN)***. The paper will be published with an open access by the end of October 2021. 
+
 
 ## Briefly about the simulator
 The simulation respects the **hyper-graph** of people associated with different groups. See an example of a graph below, where 14 people ( 9 students, 3 teachers a manager and a secretary) are associated with 3 groups (Class 1, Class 2, and Management). Each person can belong to 0 or more groups:
