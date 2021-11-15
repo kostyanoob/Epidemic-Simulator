@@ -2,9 +2,9 @@
 
 This software simulates the spread of a contagious disease in a community (organization, neighborhood, city, etc.). 
 Testing and isolation strategies can be examined during the simulation and useful metrics are 
-collected. See our paper ["Optimization of Resource-Constrained Policies for COVID-19 Testing and Quarantining"](http://jcn.or.kr/html/?pmode=BBBS0000800001&smode=ajax&fn=downFile&fileSeq=1896) for the extensive description of the probabilistic model implemented in our simulator.
+collected. See our paper ["Optimization of Resource-Constrained Policies for COVID-19 Testing and Quarantining"](https://xml.thinkonweb.com/journals/jcn/full-text/view?doi=10.23919/JCN.2021.000029) for the extensive description of the probabilistic model implemented in our simulator.
 
-:triangular_flag_on_post: **8 October 2021**: Our paper's [PDF](http://jcn.or.kr/html/?pmode=BBBS0000800001&smode=ajax&fn=downFile&fileSeq=1896) is now available in the JCN early open access page. [Cite us!](#cite-us)
+:triangular_flag_on_post: **8 October 2021**: Our paper's [PDF](https://xml.thinkonweb.com/journals/jcn/full-text/view?doi=10.23919/JCN.2021.000029) is now available in the JCN early open access page. [Cite us!](#cite-us)
 
 :triangular_flag_on_post: **20 August 2021**: Our paper was ***accepted to the Journal of Communications and Networks (JCN)***. The paper will be published with an open access by the end of October 2021. 
 
@@ -173,9 +173,17 @@ The ```explore_data.py``` is a script that allows you to re-render the plots fro
 If you build up on our research, please cite our paper which was accepted to the Journal of Communications and Networks. It will be published on October 2021 in a special issue on "Communications and Networking Approaches for Combatting COVID-19".
 ```
 @article{berestizshevsky2021optimization,
-  title={Optimization of Resource-Constrained Policies for COVID-19 Testing and Quarantining},
-  author={Berestizshevsky, Konstantin and Sadzi, Koffi-Emmanuel and Even, Guy and Shahar, Moni},
-  journal={Journal of Communications and Networks},
-  year={2021}
+title = {Optimization of Resource-Constrained Policies for {COVID}-19 Testing and Quarantining},
+  journal = {Journal of Communications and Networks},
+  volume = {23},
+  number = {5},
+  pages = {326-339},
+  year = {2021},
+  month = {Oct.},
+  issn = {1976-5541},
+  doi = {https://doi.org/10.23919/JCN.2021.000029},
+  url = {https://xml.thinkonweb.com/journals/jcn/full-text/view?doi=10.23919/JCN.2021.000029},
+  author = {Konstantin Berestizshevsky, Koffi-Emmanuel Sadzi, Guy Even, Moni Shahar},
+  keywords = {Disease model, optimization, simulation}
 }
 ```
